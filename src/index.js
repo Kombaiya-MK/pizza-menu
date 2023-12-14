@@ -57,6 +57,7 @@ function App() {
   );
 }
 
+// Header of the webpage
 function Header() {
   const style = {};
   return (
@@ -66,12 +67,28 @@ function Header() {
   );
 }
 
+// Menu function to display the pizzas in the web page
 function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza />
+      {pizzaData.map((pizza) => {
+        return <Pizza pizza={pizza} />;
+      })}
     </main>
+  );
+}
+
+function Pizza(props) {
+  return (
+    <div className="pizza">
+      <img src={props.pizza.photoName} alt={props.pizza.name} />
+      <div>
+        <h3>{props.pizza.name}</h3>
+        <p>{props.pizza.ingredients}</p>
+        <span>{props.pizza.price}</span>
+      </div>
+    </div>
   );
 }
 
@@ -82,16 +99,6 @@ function Footer() {
   const isOpen = openHour <= hour && closeHour >= hour;
   console.log(isOpen);
   return <footer className="footer">We're Currently Open!!!</footer>;
-}
-
-function Pizza() {
-  return (
-    <div>
-      <img src="pizzas/focaccia.jpg" alt="focaccia" />
-      <h3>Pizza Focaccia</h3>
-      <p>Bread with italian olive oil and rosemary</p>
-    </div>
-  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
