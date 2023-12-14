@@ -69,14 +69,17 @@ function Header() {
 
 // Menu function to display the pizzas in the web page
 function Menu() {
+  const pizzas = pizzaData;
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => {
-          return <Pizza pizza={pizza} />;
-        })}
-      </ul>
+      {pizzas.length > 0 && (
+        <ul className="pizzas">
+          {pizzas.map((pizza) => {
+            return <Pizza pizza={pizza} />;
+          })}
+        </ul>
+      )}
     </main>
   );
 }
@@ -97,10 +100,22 @@ function Pizza(props) {
 function Footer() {
   const hour = new Date().getHours();
   const openHour = 10;
-  const closeHour = 21;
+  const closeHour = 24;
   const isOpen = openHour <= hour && closeHour >= hour;
   console.log(isOpen);
-  return <footer className="footer">We're Currently Open!!!</footer>;
+  return (
+    <footer>
+      {isOpen && (
+        <div className="order">
+          <p>
+            we're open until {closeHour}.00. Please come visit us or order
+            online
+          </p>
+          <button className="btn">Order</button>
+        </div>
+      )}
+    </footer>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
