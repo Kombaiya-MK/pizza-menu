@@ -95,14 +95,15 @@ function Menu() {
 }
 
 function Pizza({ pizza }) {
-  if (pizza.soldOut) return null; // Conditional Rendering using multiple returns
+  //   if (pizza.soldOut) return null; // Conditional Rendering using multiple returns
   return (
-    <div className="pizza">
+    <div className={`pizza ${pizza.soldOut ? "sold-out" : ""}`}>
       <img src={pizza.photoName} alt={pizza.name} />
       <li>
         <h3>{pizza.name}</h3>
         <p>{pizza.ingredients}</p>
-        <span>{pizza.price}</span>
+        {/* {pizza.soldOut ? <span>SOLD OUT</span> : <span>{pizza.price}</span>} */}
+        <span>{pizza.soldOut ? "SOLD OUT" : pizza.price}</span>
       </li>
     </div>
   );
