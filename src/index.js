@@ -87,6 +87,7 @@ function Menu() {
 }
 
 function Pizza(props) {
+  if (props.pizza.soldOut) return null; // Conditional Rendering using multiple returns
   return (
     <div className="pizza">
       <img src={props.pizza.photoName} alt={props.pizza.name} />
