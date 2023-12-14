@@ -87,15 +87,15 @@ function Menu() {
   );
 }
 
-function Pizza(props) {
-  if (props.pizza.soldOut) return null; // Conditional Rendering using multiple returns
+function Pizza({ pizza }) {
+  if (pizza.soldOut) return null; // Conditional Rendering using multiple returns
   return (
     <div className="pizza">
-      <img src={props.pizza.photoName} alt={props.pizza.name} />
+      <img src={pizza.photoName} alt={pizza.name} />
       <li>
-        <h3>{props.pizza.name}</h3>
-        <p>{props.pizza.ingredients}</p>
-        <span>{props.pizza.price}</span>
+        <h3>{pizza.name}</h3>
+        <p>{pizza.ingredients}</p>
+        <span>{pizza.price}</span>
       </li>
     </div>
   );
@@ -110,7 +110,7 @@ function Footer() {
   return (
     <footer>
       {isOpen ? (
-        <Order closeHour={closeHour} />
+        <Order closeHour={closeHour} openHour={openHour} />
       ) : (
         <p>
           We're happy to welcome you between {openHour}.00 to {closeHour}.00.
@@ -120,12 +120,12 @@ function Footer() {
   );
 }
 
-function Order(props) {
+function Order({ closeHour, openHour }) {
   return (
     <div className="order">
       <p>
-        we're open until {props.closeHour}.00. Please come visit us or order
-        online.
+        we're open between {openHour}.00 and {closeHour}.00. Please come visit
+        us or order online.
       </p>
       <button className="btn">Order</button>
     </div>
