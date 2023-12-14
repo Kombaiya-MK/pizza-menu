@@ -69,17 +69,24 @@ function Header() {
 }
 
 // Menu function to display the pizzas in the web page
+// React Fragments in line 79. Another way to implement is <React.Fragment key={}/>
 function Menu() {
   const pizzas = pizzaData;
   return (
     <main className="menu">
       <h2>Our Menu</h2>
       {pizzas.length > 0 ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => {
-            return <Pizza pizza={pizza} />;
-          })}
-        </ul>
+        <>
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious.
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => {
+              return <Pizza pizza={pizza} />;
+            })}
+          </ul>
+        </>
       ) : (
         <p>We're still working on our menu!!!</p>
       )}
