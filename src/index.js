@@ -47,6 +47,7 @@ const pizzaData = [
   },
 ];
 
+//Main Component
 function App() {
   return (
     <div className="container">
@@ -57,7 +58,7 @@ function App() {
   );
 }
 
-// Header of the webpage
+// Header Component of the webpage
 function Header() {
   const style = {};
   return (
